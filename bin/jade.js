@@ -36,6 +36,8 @@ program
   .option('-H, --hierarchy', 'keep directory hierarchy when a directory is specified')
   .option('--name-after-file', 'Name the template after the last section of the file path (requires --client and overriden by --name)')
   .option('--doctype <str>', 'Specify the doctype on the command line (useful if it is not specified by the template)')
+  .option('--commonjs', 'Wrap the compiled template to be importable by CommonJS')
+  .option('--requirejs', 'Wrap the compiled template to be importable by RequireJS');
 
 
 program.on('--help', function(){
@@ -111,6 +113,18 @@ if (typeof program.name === 'string') {
 // --doctype
 
 options.doctype = program.doctype;
+
+// --commonjs
+if (program.commonjs) {
+  options.prefix = 'module.exports=';
+  options.suffix = ';';
+}
+
+// --requirejs
+if (program.requirejs) {
+  options.prefix = 'define(function(){return';
+  options.suffix = '});';
+}
 
 // left-over args are file paths
 
