@@ -1,3 +1,29 @@
+# Fork Description
+
+This fork allows Jade templates to be compiled for easy import via CommonJS or AMD/RequireJS.
+
+For CommonJS:
+```bash
+$ jade --client --no-debug --commonjs filename.jade
+```
+Import example:
+```js
+var template = require('path/to/my/template');
+```
+
+For AMD/RequireJS:
+```bash
+$ jade --client --no-debug --requirejs filename.jade
+```
+Import example:
+```js
+define([
+  'path/to/my/template',
+], function (template) {
+    // ...
+})
+```
+
 # [![Jade - Node Template Engine](http://garthdb.com/img/jade_branding/jade-01.svg)](http://jade-lang.com/)
 
 Full documentation is at [jade-lang.com](http://jade-lang.com/)
