@@ -116,7 +116,7 @@ options.doctype = program.doctype;
 
 // --commonjs
 if (program.commonjs) {
-  options.prefix = 'module.exports=';
+  options.prefix = 'var jade = require(\'jade/lib/runtime\');\nmodule.exports=';
   options.suffix = ';';
 }
 
